@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from "react-slick/lib/slider";
-import { slickSliderSettings, sliderData } from "../../data/HomePageData";
+import { slickSliderSettings, sliderData } from "../../data/PrepareData";
 
 export const HomeSlider = (props) => {
   const { type } = props;
@@ -15,7 +15,7 @@ export const HomeSlider = (props) => {
         <Slider {...slickSliderSettings} className="rooms-slider">
           {sliderData[type].map((item) => (
             <div>
-              <img src={item.src} alt={item.id} />
+              <img src={item.src} alt={item.id} loading="lazy"/>
 
               <div className="slider_text">
                 <button className="btn btn-primary slider_link-button">

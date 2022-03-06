@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { sliderData } from "../../data/HomePageData";
+import { NavLink } from 'react-router-dom';
+import { sliderData } from "../../data/PrepareData";
 
 export const RoomsPage = () => {
   return (
@@ -14,15 +14,16 @@ export const RoomsPage = () => {
           <div class="row">
             {sliderData.rooms.map((item) => (
               <div class="col-md-6">
-                <Link to={{ pathname: `/room/${item.id}`, id: item.id }}>
+                <NavLink to={{ pathname: `/room/${item.id}`, id: item.id }}>
                 <div class="item-card mb-5">
                     <span className="item-price"><p>{item.price}</p></span>
-                  <img class="img-fluid" src={item.src} alt="" />
+                  <img class="img-fluid" src={item.src} alt="" loading="lazy"/>
                   <div class="item-desc">
                     <h4 class="mb-0">{item.content_text}</h4>
                   </div>
                 </div>
-                </Link>
+                </NavLink>
+                
               </div>
             ))}
           </div>

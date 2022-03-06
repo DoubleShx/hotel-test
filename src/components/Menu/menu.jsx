@@ -1,6 +1,6 @@
 import React from 'react'
 import { CRow } from "@coreui/react";
-import { menuData } from "../../data/HomePageData";
+import { menuData } from "../../data/PrepareData";
 
 export const RestaurantMenu = () => {
   return (

@@ -1,108 +1,105 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { httpGet } from "../../api";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import {
+  CCollapse,
+  CContainer,
+  CNavbar,
+  CNavbarBrand,
+  CNavbarNav,
+  CNavbarToggler,
+  CNavItem
+} from "@coreui/react";
 
 export default function Header(props) {
+  const location = useLocation();
+  const [visible, setVisible] = useState(false);
+
   useEffect(() => {
     httpGet({
-      url: '/booking-details',
+      url: "/booking-details",
       params: {
-        adults_number: '1',
-        checkin_date: '2022-03-26',
-        locale: 'ru_RU',
-        currency: 'USD',
-        hotel_id: '363464',
-        checkout_date: '2022-03-30'
+        adults_number: "1",
+        checkin_date: "2022-03-26",
+        locale: "ru_RU",
+        currency: "USD",
+        hotel_id: "363464",
+        checkout_date: "2022-03-30",
       },
     })
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
-  }, [])
-  
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <nav id="navbar-header" class="navbar navbar-expand-lg">
-      <div class="container">
-        <Link
-          class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile"
-          to="/"
-        >
-          <img src="assets/img/logo.png" alt="" />
-        </Link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="lnr lnr-menu"></span>
-        </button>
-
-        <div
-          class="collapse navbar-collapse justify-content-between"
-          id="navbarSupportedContent"
-        >
-          <ul class="navbar-nav d-flex justify-content-between">
-            <li class="nav-item only-desktop">
-              <a class="nav-link" id="side-nav-open" href="#">
-                <span class="lnr lnr-menu"></span>
-              </a>
-            </li>
-            <div class="d-flex flex-lg-row flex-column">
-              <li class="nav-item">
-                <Link class="nav-link" to="/rooms">
-                  Номера
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/meeting_rooms">
-                  Конференц Залы
-                </Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/rooms">
-                  Контакты
-                </Link>
-              </li>
-
-            </div>
-          </ul>
-
-          <a
-            class="navbar-brand navbar-brand-center d-flex align-items-center only-desktop"
-            href="#"
+    <CNavbar id="navbar-header" expand="lg" colorScheme="light" className="navbar navbar-expand-lg">
+      <CContainer fluid>
+        <CNavbarBrand href="#">
+          <Link
+            className="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile"
+            to="/"
           >
             <img src="assets/img/logo.png" alt="" />
-          </a>
-          <ul class="navbar-nav d-flex justify-content-between">
-            <div class="d-flex flex-lg-row flex-column">
-              <li class="nav-item active">
-                <a class="nav-link" href="menu.html">
-                  Menu
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="team.html">
-                  Team
-                </a>
-              </li>
+          </Link>
+        </CNavbarBrand>
+        <CNavbarToggler onClick={() => setVisible(!visible)} />
+        <CCollapse className="navbar-collapse justify-content-center" visible={visible}>
+          <CNavbarNav>
+            <CNavItem>
+              <Link
+                className={`nav-link ${
+                  location.pathname.includes("/room") ? "active" : ""
+                }`}
+                to="/rooms"
+              >
+                Номера
+              </Link>
+            </CNavItem>
+            <CNavItem>
+              <Link
+                className={`nav-link ${
+                  location.pathname.includes("/meeting_room") ? "active" : ""
+                }`}
+                to="/meeting_rooms"
+              >
+                Конференц Залы
+              </Link>
+            </CNavItem>
+            <CNavItem> 
+            <CNavbarBrand href="#" className="d-flex">
+          <Link
+            className="navbar-brand navbar-brand-center d-flex-lg align-items-center only-desktop"
+            to="/"
+          >
+            <img src="assets/img/logo.png" alt="" />
+          </Link>
+        </CNavbarBrand>
+            </CNavItem>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="reservation.html">
-                  Reservation
-                </a>
-              </li>
-            </div>
-            <li class="nav-item">
-              <a id="side-search-open" class="nav-link" href="#">
-                <span class="lnr lnr-magnifier"></span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+            <CNavItem>
+              <Link
+                className={`nav-link ${
+                  location.pathname.includes("/contacts") ? "active" : ""
+                }`}
+                to="/contacts"
+              >
+                Контакты
+              </Link>
+            </CNavItem>
+
+            <CNavItem>
+              <Link
+                className={`nav-link ${
+                  location.pathname.includes("/reservation") ? "active" : ""
+                }`}
+                to="/reservation"
+              >
+                Зарезервировать
+              </Link>
+            </CNavItem>
+          </CNavbarNav>
+        </CCollapse>
+      </CContainer>
+    </CNavbar>
   );
 }

@@ -1,10 +1,8 @@
 import React, { Suspense } from 'react'
 import {
-    Navigate,
   Route,
   Routes
 } from 'react-router-dom'
-import { CContainer } from '@coreui/react'
 
 // routes config
 import routes from '../../routes'

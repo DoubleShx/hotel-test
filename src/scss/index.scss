@@ -1,18 +1,9 @@
 @import "layout.scss";
 @import "responsive.scss";
 @import "contentSide.scss";
+@import "tables.scss";
 
 html {
-  font-size: 10px !important;
-}
-body {
-  margin: 0;
+  font-family: "Bitter", serif;
   font-family: "Inter", sans-serif;
-}
-
-.w-100 {
-  width: 100%;
-}
-.btn-primary {
-  background-color: #0085FF !important;
 }

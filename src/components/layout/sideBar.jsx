@@ -14,7 +14,7 @@ export default function SideBar(props) {
       <span>Inactive</span>
     </CNavItem>
       <CNavItem href="/pushnotifications" >
-      <img classname="pushnotifications_link" src="assets/icons/layout/push_notifications.png" alt="notyf"/>
+      <img className="pushnotifications_link" src="assets/icons/layout/push_notifications.png" alt="notyf"/>
       <span>Push Notifications</span>
       </CNavItem>
       <CNavItem href="#">

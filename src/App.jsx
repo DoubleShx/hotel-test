@@ -3,6 +3,8 @@ import React from 'react'
 import TheContent from './components/TheContent';
 import Header from './components/layout/header';
 import { PageFooter } from './components/layout/footer';
+import '@coreui/coreui/dist/css/coreui.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {

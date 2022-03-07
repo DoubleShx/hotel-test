@@ -19,7 +19,7 @@ export const RoomsPage = () => {
                     <span className="item-price"><p>{item.price}</p></span>
                   <img class="img-fluid" src={item.src} alt="" loading="lazy"/>
                   <div class="item-desc">
-                    <h4 class="mb-0">{item.content_text}</h4>
+                    <h4 class="mb-0 text-primary">{item.content_text}</h4>
                   </div>
                 </div>
                 </NavLink>

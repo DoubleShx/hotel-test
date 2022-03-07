@@ -68,7 +68,7 @@ h2 {
   background-color: #f7f8f9;
 }
 
-a {
+a:not([class*="primary"]) {
   color: #f34949;
 }
 
@@ -76,12 +76,6 @@ a:focus,
 button:focus {
   outline: none;
   box-shadow: none;
-}
-
-.btn:hover,
-a:hover {
-  text-decoration: none;
-  color: #e22104;
 }
 
 .btn-icon {
@@ -190,22 +184,6 @@ a:hover {
   font-weight: 600;
 }
 
-.btn-primary {
-  display: inline-block;
-  background-color: #6200ee;
-  color: #fff;
-  border-radius: 30px;
-  padding: 9px 25px;
-  text-transform: capitalize;
-  -webkit-transition: all 0.3s ease 0s;
-  -moz-transition: all 0.3s ease 0s;
-  -o-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-}
-
-.btn-shadow {
-  box-shadow: -5px 8px 20px 0px rgba(229, 16, 2, 0.15);
-}
 
 .btn-icon {
   color: #000;

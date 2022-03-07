@@ -17,7 +17,7 @@ const YandexMap = () => {
         <Map
           defaultState={{
             center: [56.7572164879372, 37.13465278968181],
-            zoom: 18,
+            zoom: 5,
           }}
           width="100%"
           height="500px"

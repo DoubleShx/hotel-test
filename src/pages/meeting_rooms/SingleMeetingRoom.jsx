@@ -11,7 +11,7 @@ export const SingleMeetingRoom = () => {
         <h3>{MeetingRoomsInfo[id].title}</h3>
         <div className="row single_room-images_wrapper">
           {MeetingRoomsInfo[id].images.map((imageLink) => (
-            <div className="col">
+            <div className="col d-flex">
               <img src={imageLink} alt="room" loading="lazy" className="single_meeting_room-image" />
             </div>
           ))}

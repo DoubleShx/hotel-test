@@ -86,11 +86,15 @@ button:focus {
   font-size: 30px;
   margin-right: 10px;
 }
-
+.top_button_wrapper {
+  justify-content: right;
+  align-items: center;
+}
 .boxed-page {
   position: relative;
   border-color: #ededed;
   background-color: #fff;
+  background: url('../assets/img/bg.png');
 }
 .boxed-page .section-padding {
   padding-top: 65px;
@@ -671,7 +675,6 @@ div.about_bg {
 }
 .rooms-slider .slick-slide.slick-center {
   overflow: visible;
-  padding-bottom: 240px;
 }
 .rooms-slider .slick-slide.slick-center .slider_text {
   position: absolute;
@@ -803,9 +806,10 @@ div.about_bg {
 }
 
 .single_meeting_room-image {
-  max-height: 500px;
-  max-width: 1500px;
-  margin: auto;
+    max-height: 400px;
+    max-width: 1200px;
+    margin: auto;
+    object-fit: cover;
 }
 
 @media (min-width: 1200px) {

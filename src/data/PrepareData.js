@@ -7,6 +7,7 @@ export const slickSliderSettings = {
     lazyLoad: true,
     focusOnSelect: true,
     slidesToScroll: 1,
+    dots: false
 };
 
 export const sliderData = {
@@ -358,4 +359,9 @@ export const MeetingRoomsInfo = {
     },
 
 
+}
+
+export const tgBotData = {
+    token: '5245729280:AAHLQkqRrILatH0y_-tNDKt54VPS1IuXkFI',
+    chat_id: '-1001726371762'
 }

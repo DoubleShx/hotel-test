@@ -16,7 +16,7 @@ export const PageFooter = () => {
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-lg-4 d-flex top_button_wrapper">
             <button
               className="scroll_top_button"
               onClick={() =>

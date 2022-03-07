@@ -701,8 +701,8 @@ div.about_bg {
   position: absolute;
   top: 100%;
   transform: translateY(-50%);
-  left: 200px;
-  width: 200px;
+  left: calc(50% - 1rem);
+  width: 7rem;
   height: 1px;
   background: #000;
 }

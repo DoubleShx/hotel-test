@@ -1,5 +1,5 @@
 import React from 'react'
-import { CRow } from "@coreui/react";
+import { CButton, CRow } from "@coreui/react";
 import { menuData } from "../../data/PrepareData";
 
 export const RestaurantMenu = () => {
@@ -52,7 +52,7 @@ export const RestaurantMenu = () => {
                 <h2 class="special-number">01.</h2>
                 <div class="dishes-text">
                   <h3>
-                    <span>Говяжий</span>
+                    <span className='text-primary'>Говяжий</span>
                     <br /> Стейк с кровью
                   </h3>
                   <p class="pt-3">
@@ -62,8 +62,8 @@ export const RestaurantMenu = () => {
                     eum, corporis esse quos excepturi soluta?
                   </p>
                   <h3 class="special-dishes-price">$15.00</h3>
-                  <a href="#" class="btn-primary mt-3">
-                    Заказать
+                  <a href="#" class="">
+                    <CButton color="primary" shape="rounded-pill">Заказать</CButton>
                   </a>
                 </div>
               </div>
@@ -87,7 +87,7 @@ export const RestaurantMenu = () => {
                 <h2 class="special-number">02.</h2>
                 <div class="dishes-text">
                   <h3>
-                    <span>Лосось</span>
+                    <span className='text-primary'>Лосось</span>
                     <br />
                     Цуккини
                   </h3>
@@ -98,8 +98,8 @@ export const RestaurantMenu = () => {
                     quibusdam omnis atque vero dolores!
                   </p>
                   <h3 class="special-dishes-price">$12.00</h3>
-                  <a href="#" class="btn-primary mt-3">
-                    Заказать
+                  <a href="#" class="">
+                  <CButton color="primary" shape="rounded-pill">Заказать</CButton>
                     <span>
                       <i class="fa fa-long-arrow-right"></i>
                     </span>

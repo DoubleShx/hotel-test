@@ -2,12 +2,19 @@
  *	Resto by GetTemplates.co
  *	URL: https://gettemplates.co
  */
+$theme-colors: (
+  "primary": #6200ee,
+  "secondary": #03dac6,
+  "error": #b00020,
+  "light": #f8f9fa,
+  "dark": #343a40,
+);
 html {
   overflow-x: hidden;
 }
 
 body {
-  font-family: 'Roboto Serif', serif;
+  font-family: "Roboto Serif", serif;
   font-weight: 400;
   color: #000;
   background-color: #f4ede5;
@@ -15,16 +22,16 @@ body {
 
 .nav-item .nav-link.active {
   font-weight: 700 !important;
-  color: #466EA6 !important;
+  color: #466ea6 !important;
   position: relative;
   &::after {
     width: 100%;
     bottom: 0;
     height: 1.5px;
     left: 0;
-    content: '';
+    content: "";
     position: absolute;
-    background-color: #82C9DC;
+    background-color: #82c9dc;
   }
 }
 
@@ -40,7 +47,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Roboto Serif', serif;
+  font-family: "Roboto Serif", serif;
   font-weight: 700 !important;
 }
 
@@ -138,8 +145,8 @@ a:hover {
   line-height: 58px;
   color: #2554a4;
   border: 2px solid #2554a4;
-  -webkit-transition: all .2s linear;
-  transition: all .2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
   border-radius: 50%;
   margin-left: 28px;
   position: relative;
@@ -215,9 +222,9 @@ a:hover {
   position: relative;
 }
 @media (min-width: 992px) {
-//   .hero {
-//     height: calc(100vh - 130px);
-//   }
+  //   .hero {
+  //     height: calc(100vh - 130px);
+  //   }
 }
 
 .hero-info {
@@ -239,38 +246,38 @@ a:hover {
 }
 
 .hero-carousel {
-    position: relative;
+  position: relative;
 }
 .hero-carousel button {
-    top: calc(100% - 80px);
-    height: 80px;
-    background-color: white;
-    opacity: 0.6;
+  top: calc(100% - 80px);
+  height: 80px;
+  background-color: white;
+  opacity: 0.6;
 }
 ul.home_page_main-services {
-    display: flex;
-    list-style: none;
-    justify-content: space-between;
-    height: 200px;
-    margin-top: auto;
-    margin-bottom: 0;
-    align-items: end;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  height: 200px;
+  margin-top: auto;
+  margin-bottom: 0;
+  align-items: end;
+  padding: 0;
 }
 ul.home_page_main-services li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 ul.home_page_main-services li img {
-    width: 80px;
-    margin: 20px auto 50px auto;
+  width: 80px;
+  margin: 20px auto 50px auto;
 }
 .hero-carousel button span {
-    filter: grayscale(1) invert(1);
+  filter: grayscale(1) invert(1);
 }
 .hero-carousel .carousel-control-prev {
-    left: calc(100% - 200px) !important;
+  left: calc(100% - 200px) !important;
 }
 
 .hero-carousel .button:nth-child(1),
@@ -280,7 +287,7 @@ ul.home_page_main-services li img {
 }
 
 .hero-carousel .button:nth-child(1),
-.hero-carousel .button:nth-child(2){
+.hero-carousel .button:nth-child(2) {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -467,33 +474,33 @@ ul.home_page_main-services li img {
   width: 100px;
   color: white;
   font-weight: 700;
-  z-index: 99;  
+  z-index: 99;
 }
 .item-card .item-price p {
   z-index: 99;
   margin-right: 15px;
   margin-top: 15px;
 }
-.item-card::before {
+.item-card:before {
   position: absolute;
-  content: '';
+  content: "";
   top: -0px;
   right: 0px;
   width: 150px;
   height: 150px;
   z-index: 0;
-  opacity: 99%;
+  opacity: 1;
   border-left: 200px solid rgba(255, 255, 255, 0.2);
   border-top: 200px solid black;
 }
-.item-card:hover::before { 
-  border-top: 200px solid #446A73;
+.item-card:hover:before {
+  border-top: 200px solid #446a73;
   border-left: 200px solid transparent;
 }
 .item-card {
   position: relative;
   cursor: pointer;
-  z-index: 0; 
+  z-index: 0;
 }
 .item-card:not(:hover) .item-desc {
   height: 0;
@@ -660,53 +667,53 @@ ul.home_page_main-services li img {
   visibility: visible;
 }
 section.testimony_bg {
-    background-image: url('../assets/img/testi-bg.jpg');
+  background-image: url("../assets/img/testi-bg.jpg");
 }
 section.reservation_bg {
-    background-image: url('../assets/img/reservation-bg.jpg');
+  background-image: url("../assets/img/reservation-bg.jpg");
 }
 div.about_bg {
-    background-image: url('../assets/img/hotel_1.jpg');
+  background-image: url("../assets/img/hotel_1.jpg");
 }
 
 .slick-arrow::before {
-    background-color: black;
-    border-radius: 50%;
+  background-color: black;
+  border-radius: 50%;
 }
 .slick-slide {
-    background-color: white;
+  background-color: white;
 }
 .rooms-slider {
-    background-color: white;
-    padding: 20px 0;
+  background-color: white;
+  padding: 20px 0;
 }
 .rooms-slider .slick-slide {
-    display: block;
-    padding: 35px;
-    background: white;
+  display: block;
+  padding: 35px;
+  background: white;
 }
 .rooms-slider .slick-slide.slick-center .slider_link-button {
-    position: absolute;
-    height: 40px;
-    top: 100%;
+  position: absolute;
+  height: 40px;
+  top: 100%;
 }
 .rooms-slider .slick-slide.slick-center {
-    overflow: visible;
-    padding-bottom: 240px;
+  overflow: visible;
+  padding-bottom: 240px;
 }
 .rooms-slider .slick-slide.slick-center .slider_text {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  display: none;
 }
 .rooms-slider .slick-slide:not(.slick-center) .slider_text {
-    display: none;
+  display: none;
 }
 /*=====  End of SideNav  ======*/
 /*======================================
@@ -748,7 +755,7 @@ div.about_bg {
   border-top: 1px solid rgba(236, 236, 236, 1);
   padding-top: 20px;
 }
-.contacts_page-wrapper  {
+.contacts_page-wrapper {
   margin-bottom: 50px;
 }
 .contacts_page-wrapper .contact_form-wrapper {
@@ -759,7 +766,7 @@ div.about_bg {
   margin-bottom: 50px;
 }
 .contacts_page-wrapper .title-wrapper::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 100%;
   width: 5px;
@@ -770,12 +777,14 @@ div.about_bg {
 #single_room {
   font-weight: 500;
 }
-#single_room  h4 {
+#single_room h4 {
   font-weight: 600;
   color: #6d767e;
 }
 
-#single_room p, #single_room ul, #single_room .extra_price_wrapper {
+#single_room p,
+#single_room ul,
+#single_room .extra_price_wrapper {
   margin: 20px 20px 60px 20px;
   list-style: none;
 }
@@ -786,10 +795,10 @@ div.about_bg {
   padding: 0;
 }
 #single_room .room_details h4 {
-  color: #82C9DC;
+  color: #82c9dc;
 }
 #single_room .room_details {
-  background-color: #466C75;
+  background-color: #466c75;
   color: white;
   padding: 20px;
 }
@@ -805,13 +814,13 @@ div.about_bg {
   position: relative;
   text-align: left;
   font-weight: 700;
-  color: #466C75;
+  color: #466c75;
   font-size: 40px;
   &::after {
     width: 300px;
-    content: '';
+    content: "";
     height: 4.5px;
-    background-color: #82C9DC;
+    background-color: #82c9dc;
     position: absolute;
     bottom: -4px;
     left: 15px;
@@ -828,34 +837,34 @@ div.about_bg {
 }
 
 @media (min-width: 1200px) {
-    .rooms-slider .slick-slide.slick-center {
-        transform: scale(1.2) translate(0, 0);
-    }
-    .rooms-slider .slick-slide.slick-center .slider_text {
-        display: flex;
-    }
+  .rooms-slider .slick-slide.slick-center {
+    transform: scale(1.2) translate(0, 0);
+  }
+  .rooms-slider .slick-slide.slick-center .slider_text {
+    display: flex;
+  }
 }
 
 @media (min-width: 992px) {
-    .hero-left {
-        display: flex;
-        flex-direction: column;
-        min-height: 640px;
-    }
-    #single_room {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      text-align: left;
-    }
-    .hero-left h1 {
-        margin-top: auto;
-    }
-   .navbar-nav {
-      display: flex;
-      justify-content: center;
-      width: 100% !important;
-      align-items: center;
-    }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    min-height: 640px;
+  }
+  #single_room {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+  }
+  .hero-left h1 {
+    margin-top: auto;
+  }
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+    align-items: center;
+  }
 }
 
 @media (max-width: 992px) {

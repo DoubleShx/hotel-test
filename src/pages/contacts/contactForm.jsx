@@ -26,8 +26,6 @@ export const ContactForm = () => {
                 text: Object.entries(formData).map(item => (`${item[0]}: *${item[1]}* \n`)).join("")
             }
         })
-        // .then(res => console.log(res.data.result))
-        // .then(res => setData(JSON.parse((res.data.result[16].message.text))))
         .then(res => setData(JSON.parse((res.data.result[17].channel_post.text.replace))))
         .catch(err => console.log(err))
     }

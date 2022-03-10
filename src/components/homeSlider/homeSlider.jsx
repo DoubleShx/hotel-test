@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick/lib/slider";
 import { slickSliderSettings, sliderData } from "../../data/PrepareData";
+import { reservationCollapse } from "../../store/actions/reservation";
 
 export const HomeSlider = (props) => {
   const { type } = props;
   const [activeSlide, setActiveSlide] = useState(0);
   const beforeChange = (current, next) => setActiveSlide(next);
   const afterChange = (current) => setActiveSlide(current);
+  const dispatch = useDispatch();
+
   return (
     <div id={type} class="row mt-5">
       <div class="heading-section text-center">
@@ -29,11 +33,11 @@ export const HomeSlider = (props) => {
           <h4 className="text-primary mt-3">
             {sliderData[type][activeSlide].content_text}
           </h4>
-          <NavLink to={{ pathname: `/${type.slice(0, -1)}/${+activeSlide+1}`, id: +activeSlide+1 }}>
-          <button className="btn btn-primary slider_link-button mt-3">
-            Подробнее
+          {/* <NavLink to={{ pathname: `/${type.slice(0, -1)}/${+activeSlide+1}`, id: +activeSlide+1 }}> */}
+          <button className="btn btn-primary slider_link-button mt-3" onClick={()=>dispatch(reservationCollapse(sliderData[type][activeSlide].id))}>
+            Зарезервировать
           </button>
-          </NavLink>
+          {/* </NavLink> */}
         </div>
       </div>
     </div>

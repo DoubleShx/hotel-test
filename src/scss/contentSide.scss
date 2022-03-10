@@ -93,7 +93,7 @@ button:focus {
 .boxed-page {
   position: relative;
   border-color: #ededed;
-  background-color: #fff;
+  background-color: #fff !important;
   background: url('../assets/img/bg.png');
 }
 .boxed-page .section-padding {

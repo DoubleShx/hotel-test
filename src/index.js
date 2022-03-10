@@ -1,18 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './scss/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import storeJs from './store/store.js';
+
 import '@coreui/coreui/dist/css/coreui.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter } from 'react-router-dom';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import "react-datepicker/dist/react-datepicker.css";
+import './scss/index.scss';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <Provider store={storeJs}>
     <App />
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

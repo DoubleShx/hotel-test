@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { httpGet } from "../../api";
 import { Link, useLocation } from "react-router-dom";
 import {
   CButton,
@@ -21,22 +20,7 @@ export default function Header(props) {
   const reservation = useSelector((state) => state.reservation);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("test header mount");
-    // httpGet({
-    //   url: "/booking-details",
-    //   params: {
-    //     adults_number: "1",
-    //     checkin_date: "2022-03-26",
-    //     locale: "ru_RU",
-    //     currency: "USD",
-    //     hotel_id: "363464",
-    //     checkout_date: "2022-03-30",
-    //   },
-    // })
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => console.log(err));
-  }, []);
+
   useEffect(() => {
     if (reservation.show) dispatch(reservationCollapse(false));
   }, [location.pathname]);

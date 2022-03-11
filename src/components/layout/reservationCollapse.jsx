@@ -12,7 +12,7 @@ import axios from "axios";
 const InitialformData = {
   dataPeriod: { start: new Date(), end: new Date() },
   room_id: "",
-  user_name: ''
+  user_name: "",
 };
 const InitialSubmitformData = {
   dataPeriod: {
@@ -21,8 +21,9 @@ const InitialSubmitformData = {
   },
   room_id: "",
   reservation_count: 0,
-  user_name: ''
+  user_name: "",
 };
+
 export const ReservationCollapse = (props) => {
   const reservation = useSelector((state) => state.reservation);
   const dispatch = useDispatch();
@@ -35,23 +36,23 @@ export const ReservationCollapse = (props) => {
   const [blogs, setBlogs] = useState([]);
 
   const handleClickAway = () => {
-    if (show)  {
+    if (show) {
       dispatch(reservationCollapse(false));
     }
   };
 
-  const addValue = () => {
-    db.collection("RoomsCount").add({
-      roomsCount: {
-        1: 5,
-        2: 5,
-        3: 4,
-        4: 3,
-        5: 2,
-        6: 1,
-      },
-    });
-  };
+  // const addValue = () => {
+  //   db.collection("RoomsCount").add({
+  //     roomsCount: {
+  //       1: 5,
+  //       2: 5,
+  //       3: 4,
+  //       4: 3,
+  //       5: 2,
+  //       6: 1,
+  //     },
+  //   });
+  // };
 
   //add doc with custom id and set items
   const MakeReservation = (type) => {
@@ -68,46 +69,55 @@ export const ReservationCollapse = (props) => {
     let reservedArray = roomsReservation.length
       ? roomsReservation[0][`reservation_${show}`].reservation
       : [];
-    let resultedArray = [...reservedArray, ...currentReservingArray].reduce((prevItem, item, index) => {
-      let key = Object.keys(item)[0]
-      if (prevItem.hasOwnProperty(key)) {
-        return {
-          ...prevItem,
-          [key]: +prevItem[key] + item[key]
+    let resultedArray = [...reservedArray, ...currentReservingArray].reduce(
+      (prevItem, item, index) => {
+        let key = Object.keys(item)[0];
+        if (prevItem.hasOwnProperty(key)) {
+          return {
+            ...prevItem,
+            [key]: +prevItem[key] + item[key],
+          };
         }
-      }
-     return {...prevItem, ...item}
-    }, {})
-    let sortedArray = Object.entries(resultedArray).reduce((prevItem, item, index) => {      
-      return [...prevItem, { [item[0]]: item[1] }]
-    }, []).sort((a, b) => {
-      let currentDate = Object.entries(b)
-      let prevDate = Object.entries(a)
-      return moment(prevDate[0][0]).diff(currentDate[0][0])
-    })
-    // console.log(sortedArray, 'sortedarray')
+        return { ...prevItem, ...item };
+      },
+      {}
+    );
+    let sortedArray = Object.entries(resultedArray)
+      .reduce((prevItem, item, index) => {
+        return [...prevItem, { [item[0]]: item[1] }];
+      }, [])
+      .sort((a, b) => {
+        let currentDate = Object.entries(b);
+        let prevDate = Object.entries(a);
+        return moment(prevDate[0][0]).diff(currentDate[0][0]);
+      });
     db.collection(`RoomReservation`)
       .doc(`reservation_${type}`)
       .set({
         reservation: sortedArray,
-      }).then(res => {        
-        fetchRoomsReservation(+show)
       })
+      .then((res) => {
+        fetchRoomsReservation(+show);
+      });
     axios({
-        method: 'get',
-        url: `https://api.telegram.org/bot${tgBotData.token}/sendMessage`,
-        params: {
-            chat_id: tgBotData.chat_id,
-            parse_mode: 'MarkdownV2',
-            text: `${formData.user_name} reserved room:${submitFormData.room_id}, periods: ${moment(submitFormData.dataPeriod.start).format('yyyy/MM/DD')}  ${moment(submitFormData.dataPeriod.end).format('yyyy/MM/DD')}`
-        }
+      method: "get",
+      url: `https://api.telegram.org/bot${tgBotData.token}/sendMessage`,
+      params: {
+        chat_id: tgBotData.chat_id,
+        parse_mode: "MarkdownV2",
+        text: `${formData.user_name} reserved room:${
+          submitFormData.room_id
+        }, periods: ${moment(submitFormData.dataPeriod.start).format(
+          "yyyy/MM/DD"
+        )}  ${moment(submitFormData.dataPeriod.end).format("yyyy/MM/DD")}`,
+      },
     })
-    .then(res => {
-      setSubmitFormData(InitialSubmitformData)
-      setFormData(InitialformData)
-      dispatch(reservationCollapse(false));
-    })
-    .catch(err => console.log(err))
+      .then((res) => {
+        setSubmitFormData(InitialSubmitformData);
+        setFormData(InitialformData);
+        dispatch(reservationCollapse(false));
+      })
+      .catch((err) => console.log(err));
   };
 
   const fetchRoomsCount = () => {
@@ -116,6 +126,7 @@ export const ReservationCollapse = (props) => {
       setRoomsCount(roomsCount);
     });
   };
+
   const fetchRoomsReservation = (type) => {
     fetchDataFirestore(`RoomReservation`).then((data) => {
       const documents = [];
@@ -154,11 +165,11 @@ export const ReservationCollapse = (props) => {
     fetchRoomsCount("RoomsCount");
   }, []);
 
-  useEffect(()=>{
-    if (typeof show === 'number' && +show !== 0) {
-      fetchRoomsReservation(show)
+  useEffect(() => {
+    if (typeof show === "number" && +show !== 0) {
+      fetchRoomsReservation(show);
     }
-  }, [submitFormData])
+  }, [submitFormData]);
   const addDataIfShowObject = (objectField) => {
     if (typeof show === "number" && +show !== 0) {
       return true;
@@ -199,23 +210,12 @@ export const ReservationCollapse = (props) => {
         <div class="row">
           <CCol xs="9"></CCol>
           <CCol xs="3">
-            <CCloseButton className="mt-3"
+            <CCloseButton
+              className="mt-3"
               onClick={() => dispatch(reservationCollapse(false))}
             />
           </CCol>
-          <h3
-            class="title-d"
-            // onClick={() =>
-            //   console.log(
-                // "reservation",
-                // roomsReservation,
-                // "roomscount",
-                // roomsCount,
-                // 'submitFormdata',
-            //     submitFormData.reservation_count
-            //   )
-            // }
-          >
+          <h3 class="title-d">
             Зарезервировать Номер <br />
             {addDataIfShowObject() ? RoomsInfo[show].title : ""}
           </h3>
@@ -249,6 +249,7 @@ export const ReservationCollapse = (props) => {
                     onChange={(date) => handleSetDates(date, "start")}
                     selectsStart
                     startDate={formData.dataPeriod.start}
+                    maxDate={formData.dataPeriod.end}
                     endDate={formData.dataPeriod.end}
                     required={true}
                   />
@@ -263,13 +264,13 @@ export const ReservationCollapse = (props) => {
                     onChange={(date) => handleSetDates(date, "end")}
                     selectsEnd
                     startDate={formData.dataPeriod.start}
-                    endDate={formData.dataPeriod.end}
+                    endDate={formData.dataPeriod.start}
                     minDate={formData.dataPeriod.start}
                     required={true}
                   />
                 </div>
               </div>
-                    <h5>Детали резерва</h5>
+              <h5>Детали резерва</h5>
               <div class="col-md-6 mb-2">
                 <select
                   class="form-control form-control-lg form-control-a"
@@ -279,16 +280,24 @@ export const ReservationCollapse = (props) => {
                     selectRoomCountChange(e);
                   }}
                 >
-                  <option value={0}>
-                    Количество
-                  </option>
+                  <option value={0}>Количество</option>
                   {[...Array(freeRoomsCount + 1).keys()].map((item, index) => (
                     <option value={+index + 1}>{item}</option>
                   ))}
                 </select>
               </div>
               <div class="col-md-6 mb-2">
-                <input required name="user_name" type="text" class="form-control form-control-lg form-control-a" placeholder="Полное Имя" value={formData.user_name} onChange={(e)=>setFormData({...formData, user_name: e.target.value})}/>
+                <input
+                  required
+                  name="user_name"
+                  type="text"
+                  class="form-control form-control-lg form-control-a"
+                  placeholder="Полное Имя"
+                  value={formData.user_name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, user_name: e.target.value })
+                  }
+                />
               </div>
               <div class="col-md-12">
                 {roomsCount[+submitFormData.room_id]
@@ -309,7 +318,15 @@ export const ReservationCollapse = (props) => {
                     e.preventDefault();
                     MakeReservation(submitFormData.room_id);
                   }}
-                  disabled={!submitFormData.dataPeriod || !submitFormData.reservation_count || +submitFormData.reservation_count <= 1 || !submitFormData.room_id || !formData.user_name ? true : false}
+                  disabled={
+                    !submitFormData.dataPeriod ||
+                    !submitFormData.reservation_count ||
+                    +submitFormData.reservation_count <= 1 ||
+                    !submitFormData.room_id ||
+                    !formData.user_name
+                      ? true
+                      : false
+                  }
                 >
                   Submit
                 </button>

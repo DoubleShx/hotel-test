@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import Slider from "react-slick/lib/slider";
 import { slickSliderSettings, sliderData } from "../../data/PrepareData";
 import { reservationCollapse } from "../../store/actions/reservation";

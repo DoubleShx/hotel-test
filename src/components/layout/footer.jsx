@@ -1,6 +1,4 @@
-import { CButton } from "@coreui/react";
 import React from "react";
-import { Link } from "react-router-dom";
 export const PageFooter = () => {
   return (
     <footer class="mastfoot pb-5 bg-white section-padding pb-0">

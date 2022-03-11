@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { MeetingRoomsInfo, sliderData } from "../../data/PrepareData";
+import { MeetingRoomsInfo } from "../../data/PrepareData";
 
 export const SingleMeetingRoom = () => {
   let { id } = useParams();

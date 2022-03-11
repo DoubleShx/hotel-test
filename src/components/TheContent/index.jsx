@@ -28,7 +28,6 @@ const TheContent = (props) => {
                   />
               )
             })}
-            {/* <Route path="/auth" element={this.state.token ? <Navigate to="/competition" /> : '404'} /> */}
           </Routes>
         </Suspense>
   )

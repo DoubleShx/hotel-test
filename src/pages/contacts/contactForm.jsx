@@ -30,7 +30,7 @@ export const ContactForm = () => {
         .catch(err => console.log(err))
     }
     return (
-        <form className="form-a contactForm" action="" role="form" onClick={()=>console.log(typeof data, data)} onSubmit={SubmitForm}>
+        <form className="form-a contactForm" action="" role="form" onSubmit={SubmitForm}>
         <div className="row">
           <div className="col-md-6 mb-3">
             <div className="form-group">
